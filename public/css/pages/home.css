@@ -1,0 +1,1360 @@
+/* ==========================================================================
+   TPOTN — Home Page
+   ========================================================================== */
+
+/* ---------------------------------------------------------------------- */
+/* Hero                                                                    */
+/* ---------------------------------------------------------------------- */
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+
+  background:
+    radial-gradient(
+      ellipse at 15% 15%,
+      rgba(199, 154, 60, 0.14),
+      transparent 55%
+    ),
+    linear-gradient(
+      160deg,
+      var(--color-maroon-900) 0%,
+      var(--color-maroon-700) 58%,
+      var(--color-maroon-600) 100%
+    );
+
+  color: var(--color-ivory-100);
+  overflow: hidden;
+  padding-top: 6rem;
+}
+
+
+/* ---------------------------------------------------------------------- */
+/* Background Dot Grid                                                     */
+/* ---------------------------------------------------------------------- */
+
+.hero__dotgrid {
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    radial-gradient(
+      rgba(247, 241, 228, 0.09) 1.2px,
+      transparent 1.2px
+    );
+
+  background-size: 26px 26px;
+
+  mask-image:
+    radial-gradient(
+      ellipse at 70% 40%,
+      black 0%,
+      transparent 70%
+    );
+
+  pointer-events: none;
+}
+
+
+/* ---------------------------------------------------------------------- */
+/* Hero Inner                                                              */
+/* ---------------------------------------------------------------------- */
+
+.hero__inner {
+  position: relative;
+  z-index: 2;
+
+  display: grid;
+
+  /*
+    Left = text
+    Right = large artwork
+  */
+  grid-template-columns: 0.95fr 1.05fr;
+
+  gap: 2rem;
+
+  align-items: center;
+
+  width: 100%;
+}
+
+
+/* ---------------------------------------------------------------------- */
+/* Hero Content                                                            */
+/* ---------------------------------------------------------------------- */
+
+.hero__eyebrow {
+  margin-bottom: var(--space-md);
+}
+
+.hero__title {
+  font-size: var(--fs-h1);
+  color: var(--color-ivory-50);
+}
+
+.hero__title em {
+  display: block;
+
+  font-style: normal;
+
+  background:
+    linear-gradient(
+      100deg,
+      var(--color-gold-300),
+      var(--color-gold-500) 60%
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+}
+
+.hero__tamil {
+  margin-top: var(--space-sm);
+
+  font-size: 1.3rem;
+
+  color:
+    rgba(247, 241, 228, 0.72);
+}
+
+.hero__desc {
+  margin-top: var(--space-md);
+
+  max-width: 460px;
+
+  font-size: var(--fs-body-lg);
+
+  color:
+    rgba(247, 241, 228, 0.78);
+}
+
+.hero__actions {
+  margin-top: var(--space-lg);
+
+  display: flex;
+
+  align-items: center;
+
+  gap: var(--space-md);
+
+  flex-wrap: wrap;
+}
+
+
+/* ---------------------------------------------------------------------- */
+/* Hero Stats                                                              */
+/* ---------------------------------------------------------------------- */
+
+.hero__stats {
+  display: flex;
+
+  gap: var(--space-xl);
+
+  margin-top: var(--space-2xl);
+
+  padding-top: var(--space-lg);
+
+  border-top:
+    1px solid var(--color-line-inverse);
+
+  max-width: 480px;
+}
+
+.hero__stat-num {
+  font-family: var(--font-display);
+
+  font-size: 1.9rem;
+
+  color:
+    var(--color-gold-300);
+}
+
+.hero__stat-label {
+  font-family: var(--font-mono);
+
+  font-size: 0.66rem;
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+
+  color:
+    rgba(247, 241, 228, 0.55);
+
+  margin-top: 2px;
+}
+
+
+/* ==========================================================================
+   HERO ARTWORK
+   ========================================================================== */
+
+/*
+  IMPORTANT:
+
+  No mirror frame
+  No arch border
+  No inner line
+  No background box
+
+  Artwork itself will appear large on the right.
+*/
+
+.hero__art {
+  position: relative;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  min-height: 620px;
+
+  width: 100%;
+}
+
+
+/* ---------------------------------------------------------------------- */
+/* Artwork Container                                                       */
+/* ---------------------------------------------------------------------- */
+
+.kolam-frame {
+  position: relative;
+
+  /*
+    BIG IMAGE AREA
+  */
+  width: min(100%, 600px);
+
+  height: 650px;
+
+  /*
+    Remove old arch shape
+  */
+  aspect-ratio: auto;
+
+  border-radius: 0;
+
+  /*
+    REMOVE MIRROR / GLASS BACKGROUND
+  */
+  background: transparent;
+
+  /*
+    REMOVE BORDER
+  */
+  border: none;
+
+  /*
+    REMOVE SHADOW
+  */
+  box-shadow: none;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  overflow: visible;
+}
+
+
+/* ---------------------------------------------------------------------- */
+/* Remove Mirror Lines                                                     */
+/* ---------------------------------------------------------------------- */
+
+.kolam-frame::before {
+  display: none;
+
+  content: none;
+
+  border: none;
+}
+
+
+/* ---------------------------------------------------------------------- */
+/* Main Artwork / SVG                                                      */
+/* ---------------------------------------------------------------------- */
+
+.kolam-svg {
+  /*
+    Make the artwork much larger
+  */
+  width: 100%;
+  height: 100%;
+
+  max-width: 600px;
+  max-height: 650px;
+
+  display: block;
+
+  object-fit: contain;
+
+  /*
+    Slightly move artwork upward/right
+    like your reference screenshot
+  */
+  transform:
+    translate(15px, -5px)
+    scale(1.08);
+
+  transform-origin: center;
+}
+
+
+/* ---------------------------------------------------------------------- */
+/* SVG Styling                                                             */
+/* ---------------------------------------------------------------------- */
+
+.kolam-svg path,
+.kolam-svg circle.kolam-dot {
+  stroke: var(--color-gold-300);
+}
+
+.kolam-svg path {
+  fill: none;
+
+  stroke-width: 1.4;
+
+  stroke-linecap: round;
+
+  stroke-linejoin: round;
+
+  stroke-dasharray: 900;
+
+  stroke-dashoffset: 900;
+
+  animation:
+    draw-kolam
+    2.6s
+    var(--ease-out)
+    forwards
+    0.4s;
+}
+
+.kolam-svg circle.kolam-dot {
+  fill: var(--color-gold-400);
+
+  opacity: 0;
+
+  animation:
+    fade-in
+    0.5s
+    var(--ease-out)
+    forwards
+    2.6s;
+}
+
+
+/* ---------------------------------------------------------------------- */
+/* Kolam Animation                                                         */
+/* ---------------------------------------------------------------------- */
+
+@keyframes draw-kolam {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fade-in {
+  to {
+    opacity: 0.9;
+  }
+}
+
+
+/* ---------------------------------------------------------------------- */
+/* Reduced Motion                                                          */
+/* ---------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .kolam-svg path {
+    stroke-dashoffset: 0;
+
+    animation: none;
+  }
+
+  .kolam-svg circle.kolam-dot {
+    opacity: 0.9;
+
+    animation: none;
+  }
+
+}
+
+
+/* ==========================================================================
+   FLOATING CHIPS
+   ========================================================================== */
+
+.hero__floating-chip {
+  position: absolute;
+
+  background:
+    var(--glass-bg-dark);
+
+  backdrop-filter:
+    var(--glass-blur);
+
+  -webkit-backdrop-filter:
+    var(--glass-blur);
+
+  border:
+    1px solid var(--glass-border-dark);
+
+  color:
+    var(--color-ivory-100);
+
+  padding:
+    0.55rem 0.9rem;
+
+  border-radius:
+    var(--radius-pill);
+
+  font-size: 0.8rem;
+
+  font-weight: 600;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 0.4rem;
+
+  animation:
+    float
+    6s
+    ease-in-out
+    infinite;
+}
+
+
+/* Top chip */
+
+.hero__floating-chip--1 {
+  top: 9%;
+  left: 2%;
+
+  animation-delay: 0s;
+}
+
+
+/* Right chip */
+
+.hero__floating-chip--2 {
+  bottom: 18%;
+  right: -2%;
+
+  animation-delay: 1.4s;
+}
+
+
+/* Bottom chip */
+
+.hero__floating-chip--3 {
+  bottom: 4%;
+  left: 20%;
+
+  animation-delay: 2.6s;
+}
+
+
+/* ---------------------------------------------------------------------- */
+/* Floating Animation                                                      */
+/* ---------------------------------------------------------------------- */
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+}
+
+
+/* ---------------------------------------------------------------------- */
+/* Reduced Motion                                                         */
+/* ---------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .hero__floating-chip {
+    animation: none;
+  }
+
+}
+
+
+/* ==========================================================================
+   SCROLL CUE
+   ========================================================================== */
+
+.hero__scroll-cue {
+  position: absolute;
+
+  bottom: var(--space-lg);
+
+  left: 50%;
+
+  transform:
+    translateX(-50%);
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: var(--space-2xs);
+
+  font-family: var(--font-mono);
+
+  font-size: 0.64rem;
+
+  letter-spacing: 0.14em;
+
+  text-transform: uppercase;
+
+  color:
+    rgba(247, 241, 228, 0.55);
+
+  z-index: 2;
+}
+
+.hero__scroll-cue-line {
+  width: 1px;
+
+  height: 34px;
+
+  background:
+    linear-gradient(
+      rgba(247, 241, 228, 0.7),
+      transparent
+    );
+
+  animation:
+    scroll-cue
+    1.8s
+    var(--ease-in-out)
+    infinite;
+}
+
+@keyframes scroll-cue {
+
+  0% {
+    transform: scaleY(0.2);
+    transform-origin: top;
+  }
+
+  50% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+
+  50.001% {
+    transform-origin: bottom;
+  }
+
+  100% {
+    transform: scaleY(0.2);
+    transform-origin: bottom;
+  }
+
+}
+
+
+/* ==========================================================================
+   TABLET / SMALL LAPTOP
+   ========================================================================== */
+
+@media (max-width: 1100px) {
+
+  .hero__inner {
+    grid-template-columns: 0.95fr 1.05fr;
+
+    gap: 1rem;
+  }
+
+  .hero__art {
+    min-height: 580px;
+  }
+
+  .kolam-frame {
+    width: 100%;
+    height: 600px;
+  }
+
+  .kolam-svg {
+    max-width: 560px;
+    max-height: 600px;
+
+    transform:
+      translate(5px, -5px)
+      scale(1.04);
+  }
+
+}
+
+
+/* ==========================================================================
+   MOBILE / TABLET
+   ========================================================================== */
+
+@media (max-width: 980px) {
+
+  .hero {
+    padding-top: 6rem;
+  }
+
+  .hero__inner {
+
+    grid-template-columns: 1fr;
+
+    text-align: left;
+
+    gap: 1rem;
+  }
+
+
+  /*
+    Artwork first
+  */
+
+  .hero__art {
+
+    order: -1;
+
+    min-height: 430px;
+
+    margin-bottom: 0;
+  }
+
+
+  .kolam-frame {
+
+    width: 100%;
+
+    height: 450px;
+
+    margin-inline: auto;
+  }
+
+
+  .kolam-svg {
+
+    width: 100%;
+
+    height: 100%;
+
+    max-width: 460px;
+
+    max-height: 450px;
+
+    transform:
+      scale(1.02);
+  }
+
+
+  .hero__stats {
+
+    gap: var(--space-lg);
+  }
+
+}
+
+
+/* ==========================================================================
+   SMALL MOBILE
+   ========================================================================== */
+
+@media (max-width: 620px) {
+
+  .hero {
+    min-height: auto;
+
+    padding-top: 5.5rem;
+
+    padding-bottom: 5rem;
+  }
+
+
+  .hero__art {
+
+    min-height: 360px;
+  }
+
+
+  .kolam-frame {
+
+    height: 370px;
+  }
+
+
+  .kolam-svg {
+
+    max-width: 390px;
+
+    max-height: 370px;
+
+    transform:
+      scale(1);
+  }
+
+
+  .hero__floating-chip {
+    display: none;
+  }
+
+
+  .hero__stats {
+
+    gap: 1rem;
+
+    margin-top: 2rem;
+
+    padding-top: 1rem;
+  }
+
+
+  .hero__stat-num {
+    font-size: 1.5rem;
+  }
+
+}
+
+
+/* ==========================================================================
+   EXPLORE TAMIL NADU
+   ========================================================================== */
+
+.explore-map {
+
+  position: relative;
+
+  border-radius:
+    var(--radius-lg);
+
+  background:
+    var(--color-ivory-200);
+
+  border:
+    1px solid var(--color-line);
+
+  padding:
+    var(--space-2xl)
+    var(--space-lg);
+
+  overflow: hidden;
+}
+
+.explore-map__grid {
+
+  position: absolute;
+
+  inset: 0;
+
+  background-image:
+    radial-gradient(
+      var(--color-ink-300) 1px,
+      transparent 1px
+    );
+
+  background-size: 34px 34px;
+
+  opacity: 0.25;
+}
+
+.explore-map__inner {
+
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns:
+    0.9fr 1.1fr;
+
+  gap:
+    var(--space-2xl);
+
+  align-items: center;
+}
+
+.explore-map__nodes {
+
+  position: relative;
+
+  aspect-ratio: 4 / 5;
+}
+
+.tn-mini-map {
+
+  width: 100%;
+  height: 100%;
+
+  display: block;
+}
+
+.tn-mini-map__landmass {
+
+  fill:
+    var(--color-ivory-300);
+
+  stroke:
+    var(--color-line-strong);
+
+  stroke-width: 1.5;
+}
+
+.tn-mini-map__node {
+
+  cursor: pointer;
+}
+
+.tn-mini-map__dot {
+
+  fill:
+    var(--color-maroon-600);
+
+  stroke:
+    rgba(92, 26, 34, 0.18);
+
+  stroke-width: 8;
+
+  transition:
+    fill var(--dur-fast) var(--ease-out),
+    r var(--dur-fast) var(--ease-out),
+    stroke var(--dur-fast) var(--ease-out);
+}
+
+.tn-mini-map__node:hover .tn-mini-map__dot,
+.tn-mini-map__node:focus-visible .tn-mini-map__dot {
+
+  fill:
+    var(--color-gold-500);
+
+  stroke:
+    rgba(199, 154, 60, 0.28);
+
+  r: 15;
+}
+
+.explore-map__copy .btn {
+
+  margin-top:
+    var(--space-md);
+}
+
+.explore-map__list {
+
+  margin-top:
+    var(--space-lg);
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap:
+    var(--space-2xs);
+}
+
+@media (max-width: 860px) {
+
+  .explore-map__inner {
+
+    grid-template-columns: 1fr;
+  }
+
+  .explore-map__nodes {
+
+    aspect-ratio: 4 / 3.2;
+  }
+
+}
+
+
+/* ==========================================================================
+   GRIDS
+   ========================================================================== */
+
+.category-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap:
+    var(--space-md);
+}
+
+.spotlight-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap:
+    var(--space-md);
+}
+
+.fact-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap:
+    var(--space-md);
+}
+
+@media (max-width: 1080px) {
+
+  .category-grid,
+  .spotlight-grid {
+
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+  .fact-grid {
+
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+}
+
+@media (max-width: 620px) {
+
+  .category-grid,
+  .spotlight-grid,
+  .fact-grid {
+
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+/* ==========================================================================
+   TASTE & TRADITION
+   ========================================================================== */
+
+.preview-columns {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap:
+    var(--space-md);
+}
+
+.preview-col {
+
+  padding:
+    var(--space-lg)
+    var(--space-md);
+
+  border-radius:
+    var(--radius-md);
+
+  border:
+    1px solid var(--color-line);
+
+  background:
+    var(--color-ivory-50);
+}
+
+.preview-col__head {
+
+  display: flex;
+
+  align-items: center;
+
+  gap:
+    var(--space-2xs);
+
+  margin-bottom:
+    var(--space-sm);
+}
+
+.preview-col__head svg {
+
+  width: 22px;
+  height: 22px;
+
+  color:
+    var(--color-maroon-600);
+}
+
+.preview-col__title {
+
+  font-family:
+    var(--font-display);
+
+  font-size: 1.15rem;
+}
+
+.preview-col__items {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap:
+    var(--space-xs);
+
+  margin-top:
+    var(--space-sm);
+}
+
+.preview-col__item {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: baseline;
+
+  padding-block:
+    var(--space-xs);
+
+  border-top:
+    1px solid var(--color-line);
+
+  font-size: 0.9rem;
+}
+
+.preview-col__item span:last-child {
+
+  font-family:
+    var(--font-mono);
+
+  font-size: 0.68rem;
+
+  color:
+    var(--color-ink-300);
+
+  text-transform: uppercase;
+}
+
+@media (max-width: 860px) {
+
+  .preview-columns {
+
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+/* ==========================================================================
+   DISCOVER
+   ========================================================================== */
+
+.discover-section {
+
+  background:
+    var(--color-ivory-200);
+
+  border-radius:
+    var(--radius-lg);
+
+  padding:
+    var(--space-2xl)
+    var(--space-lg);
+}
+
+.fact-card__hint-label {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 4px;
+}
+
+
+/* ==========================================================================
+   FINAL CTA
+   ========================================================================== */
+
+.final-cta {
+
+  position: relative;
+
+  border-radius:
+    var(--radius-lg);
+
+  overflow: hidden;
+
+  padding:
+    var(--space-3xl)
+    var(--space-lg);
+
+  text-align: center;
+
+  background:
+    linear-gradient(
+      150deg,
+      var(--color-maroon-900),
+      var(--color-maroon-700)
+    );
+
+  color:
+    var(--color-ivory-100);
+}
+
+.final-cta__dotgrid {
+
+  position: absolute;
+
+  inset: 0;
+
+  background-image:
+    radial-gradient(
+      rgba(247, 241, 228, 0.08) 1.2px,
+      transparent 1.2px
+    );
+
+  background-size: 24px 24px;
+
+  mask-image:
+    radial-gradient(
+      circle at 50% 50%,
+      black 0%,
+      transparent 75%
+    );
+}
+
+.final-cta__inner {
+
+  position: relative;
+
+  z-index: 1;
+
+  max-width: 640px;
+
+  margin-inline: auto;
+}
+
+.final-cta h2 {
+
+  color:
+    var(--color-ivory-50);
+}
+
+.final-cta .tamil-accent {
+
+  display: block;
+
+  margin-top:
+    var(--space-2xs);
+
+  font-size: 1.2rem;
+
+  color:
+    var(--color-gold-300);
+}
+
+.final-cta p {
+
+  margin-top:
+    var(--space-md);
+
+  color:
+    rgba(247, 241, 228, 0.78);
+}
+
+.final-cta__actions {
+
+  margin-top:
+    var(--space-lg);
+
+  display: flex;
+
+  justify-content: center;
+
+  gap:
+    var(--space-md);
+
+  flex-wrap: wrap;
+}
+
+
+/* ==========================================================================
+   THESIS
+   ========================================================================== */
+
+.thesis {
+
+  max-width: 760px;
+
+  margin-inline: auto;
+
+  text-align: center;
+}
+
+.thesis__mark {
+
+  font-family:
+    var(--font-display);
+
+  font-size: 3rem;
+
+  line-height: 1;
+
+  color:
+    var(--color-gold-500);
+
+  display: block;
+
+  margin-bottom:
+    var(--space-sm);
+}
+
+.thesis__statement {
+
+  font-family:
+    var(--font-display);
+
+  font-weight: 500;
+
+  font-size:
+    clamp(
+      1.4rem,
+      1.1rem + 1.4vw,
+      2.1rem
+    );
+
+  line-height: 1.35;
+
+  color:
+    var(--color-ink-900);
+}
+
+.thesis__statement strong {
+
+  font-weight: 600;
+
+  color:
+    var(--color-maroon-600);
+}
+
+.thesis__sub {
+
+  margin-top:
+    var(--space-md);
+
+  color:
+    var(--color-ink-500);
+
+  font-size:
+    var(--fs-body-lg);
+}
+
+
+/* ==========================================================================
+   SPOTLIGHT CARDS
+   ========================================================================== */
+
+.spotlight-card__art-bg--1 {
+  background:
+    linear-gradient(
+      150deg,
+      #8f2c36,
+      #3c0f16
+    );
+}
+
+.spotlight-card__art-bg--2 {
+  background:
+    linear-gradient(
+      150deg,
+      #c79a3c,
+      #77232c
+    );
+}
+
+.spotlight-card__art-bg--3 {
+  background:
+    linear-gradient(
+      150deg,
+      #33513f,
+      #241712
+    );
+}
+
+.spotlight-card__art-bg--4 {
+  background:
+    linear-gradient(
+      150deg,
+      #a84a2a,
+      #3c0f16
+    );
+}
+
+.spotlight-card__glyph svg {
+
+  stroke:
+    rgba(247, 241, 228, 0.85);
+}
+
+
+/* ==========================================================================
+   DISCOVER ACTIONS
+   ========================================================================== */
+
+.discover-section__head {
+
+  display: flex;
+
+  align-items: flex-end;
+
+  justify-content: space-between;
+
+  gap:
+    var(--space-md);
+
+  flex-wrap: wrap;
+
+  margin-bottom:
+    var(--space-xl);
+}
+
+.discover-section__head .section-head {
+
+  margin-bottom: 0;
+}
+
+#shuffleFacts svg {
+
+  width: 16px;
+  height: 16px;
+
+  transition:
+    transform
+    var(--dur-med)
+    var(--ease-in-out);
+}
+
+#shuffleFacts:hover svg {
+
+  transform:
+    rotate(180deg);
+}

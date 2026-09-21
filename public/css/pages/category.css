@@ -1,0 +1,283 @@
+/* ==========================================================================
+   TPOTN — Category Pages (Culture, Food, Arts, Festivals, History,
+   People, Places — one shared stylesheet, one shared renderer)
+   Deliberately mirrors district.css's hero/accent/story-card patterns so
+   the two page families feel like one product, not two designs bolted
+   together.
+   ========================================================================== */
+
+/* ---- Accent system (same idea as district.css, kept independent so
+   a category page's tone doesn't have to match any one district) ---- */
+body[data-cat-accent="gold"] {
+  --accent-1: var(--color-gold-500);
+  --accent-2: var(--color-gold-700);
+  --accent-ink: var(--color-maroon-900);
+}
+body[data-cat-accent="maroon"] {
+  --accent-1: var(--color-maroon-500);
+  --accent-2: var(--color-maroon-900);
+  --accent-ink: var(--color-ivory-50);
+}
+body[data-cat-accent="terracotta"] {
+  --accent-1: var(--color-terracotta);
+  --accent-2: #6e2f19;
+  --accent-ink: var(--color-ivory-50);
+}
+body[data-cat-accent="green"] {
+  --accent-1: var(--color-green);
+  --accent-2: #1c2f24;
+  --accent-ink: var(--color-ivory-50);
+}
+body[data-cat-accent="bronze"] {
+  --accent-1: var(--color-bronze);
+  --accent-2: #3c2a1a;
+  --accent-ink: var(--color-ivory-50);
+}
+
+/* ---------------------------------------------------------------------- */
+/* Category Hero                                                          */
+/* ---------------------------------------------------------------------- */
+.category-hero {
+  position: relative;
+  padding-top: 9rem;
+  padding-bottom: var(--space-2xl);
+  overflow: hidden;
+  background: linear-gradient(155deg, var(--accent-1, var(--color-maroon-700)) 0%, var(--accent-2, var(--color-maroon-900)) 100%);
+  color: var(--accent-ink, var(--color-ivory-50));
+}
+
+.category-hero__photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.category-hero__photo-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(155deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.55) 100%);
+}
+
+.category-hero__dotgrid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.12;
+  background-image: radial-gradient(currentColor 1px, transparent 1px);
+  background-size: 22px 22px;
+  pointer-events: none;
+}
+
+.category-hero__glyph {
+  position: absolute;
+  right: -4%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40%;
+  max-width: 380px;
+  opacity: 0.16;
+  pointer-events: none;
+}
+
+.category-hero__glyph svg {
+  width: 100%;
+  height: auto;
+  stroke: currentColor;
+}
+
+.category-hero__inner {
+  position: relative;
+  max-width: 680px;
+}
+
+.category-hero__tamil {
+  margin-top: var(--space-2xs);
+  font-size: 1.2rem;
+  opacity: 0.85;
+  color: inherit;
+}
+
+.category-hero h1 {
+  margin-top: var(--space-sm);
+  font-size: var(--fs-h1);
+  color: inherit;
+}
+
+.category-hero__tagline {
+  margin-top: var(--space-sm);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: var(--fs-h4);
+  opacity: 0.92;
+  color: inherit;
+}
+
+.category-hero__intro {
+  margin-top: var(--space-md);
+  max-width: 580px;
+  font-size: var(--fs-body-lg);
+  opacity: 0.88;
+  color: inherit;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Statewide overview grid (reuses .card .story-card look from district.css,
+   redeclared minimally here so category.css has no hard dependency on
+   district.css being loaded) */
+/* ---------------------------------------------------------------------- */
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+.overview-card {
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.overview-card__mark {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-sm);
+  display: grid;
+  place-items: center;
+  background: rgba(199, 154, 60, 0.14);
+  color: var(--color-gold-700);
+}
+
+.overview-card__title {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+}
+
+.overview-card__text {
+  font-size: 0.92rem;
+  color: var(--color-ink-500);
+}
+
+@media (max-width: 960px) {
+  .overview-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .overview-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------------------------------------------------------------------- */
+/* "See it in each district" cross-link grid                              */
+/* ---------------------------------------------------------------------- */
+.district-link-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-md);
+}
+
+.district-link-card {
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+}
+
+.district-link-card__tamil {
+  font-size: 0.85rem;
+  color: var(--color-ink-300);
+  opacity: 0.9;
+}
+
+.district-link-card__name {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.district-link-card__teaser {
+  font-size: 0.9rem;
+  color: var(--color-ink-500);
+  flex-grow: 1;
+}
+
+.district-link-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3xs);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-gold-700);
+}
+
+/* ---------------------------------------------------------------------- */
+/* Final CTA + related-category nav                                       */
+/* ---------------------------------------------------------------------- */
+.category-final {
+  position: relative;
+  border-radius: var(--radius-lg);
+  padding: var(--space-2xl) var(--space-lg);
+  text-align: center;
+  overflow: hidden;
+  background: linear-gradient(155deg, var(--color-maroon-700) 0%, var(--color-maroon-900) 100%);
+  color: var(--color-ivory-50);
+}
+
+.category-final__dotgrid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.1;
+  background-image: radial-gradient(#fff 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.category-final__inner {
+  position: relative;
+}
+
+.category-final h2 {
+  color: var(--color-ivory-50);
+}
+
+.category-final p {
+  margin-top: var(--space-sm);
+  color: rgba(247, 241, 228, 0.75);
+}
+
+.category-final__actions {
+  margin-top: var(--space-lg);
+  display: flex;
+  justify-content: center;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.category-related {
+  margin-top: var(--space-xl);
+  display: flex;
+  justify-content: center;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.category-related a {
+  font-size: 0.85rem;
+  color: rgba(247, 241, 228, 0.7);
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--color-line-inverse);
+  border-radius: var(--radius-pill);
+  transition: color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+}
+
+.category-related a:hover {
+  color: var(--color-gold-300);
+  border-color: var(--color-gold-400);
+}

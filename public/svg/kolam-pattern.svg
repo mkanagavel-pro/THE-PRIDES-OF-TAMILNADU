@@ -1,0 +1,18 @@
+<svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" class="kolam-svg" role="img" aria-label="Kolam-inspired decorative line pattern">
+  <!-- Reference copy of the hero kolam artwork. The live version used in
+       index.html is inlined so global.css / home.css can animate its
+       path + circle.kolam-dot elements directly. -->
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M150,40 C185,60 210,95 210,140 C210,185 185,220 150,240 C115,220 90,185 90,140 C90,95 115,60 150,40 Z" />
+    <path d="M150,70 C172,85 188,110 188,140 C188,170 172,195 150,210 C128,195 112,170 112,140 C112,110 128,85 150,70 Z" />
+    <path d="M60,150 C60,115 95,90 140,90 C185,90 220,115 220,150 C220,185 185,210 140,210 C95,210 60,185 60,150 Z" transform="rotate(90 150 150)" />
+    <circle cx="150" cy="150" r="26" />
+  </g>
+  <g>
+    <circle class="kolam-dot" cx="150" cy="150" r="4" />
+    <circle class="kolam-dot" cx="150" cy="45" r="3" />
+    <circle class="kolam-dot" cx="150" cy="255" r="3" />
+    <circle class="kolam-dot" cx="45" cy="150" r="3" />
+    <circle class="kolam-dot" cx="255" cy="150" r="3" />
+  </g>
+</svg>

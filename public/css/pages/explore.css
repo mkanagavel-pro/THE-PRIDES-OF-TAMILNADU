@@ -1,0 +1,219 @@
+/* ==========================================================================
+   TPOTN — Explore Page (Interactive Tamil Nadu Map)
+   ========================================================================== */
+
+/* ---------------------------------------------------------------------- */
+/* Page header                                                             */
+/* ---------------------------------------------------------------------- */
+.explore-hero {
+  padding-top: 9rem;
+  padding-bottom: var(--space-lg);
+  background: linear-gradient(180deg, var(--color-maroon-900) 0%, var(--color-maroon-700) 100%);
+  color: var(--color-ivory-100);
+}
+
+.explore-hero__inner {
+  max-width: 680px;
+}
+
+.explore-hero h1 {
+  color: var(--color-ivory-50);
+  font-size: var(--fs-h2);
+  margin-top: var(--space-sm);
+}
+
+.explore-hero p {
+  margin-top: var(--space-sm);
+  color: rgba(247, 241, 228, 0.78);
+  font-size: var(--fs-body-lg);
+}
+
+/* ---------------------------------------------------------------------- */
+/* Map layout                                                              */
+/* ---------------------------------------------------------------------- */
+.map-section {
+  padding-block: var(--space-xl);
+}
+
+.map-layout {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: var(--space-lg);
+  align-items: start;
+}
+
+@media (max-width: 960px) {
+  .map-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------------------------------------------------------------------- */
+/* Map card + SVG                                                          */
+/* ---------------------------------------------------------------------- */
+.tn-map-card {
+  position: relative;
+  background: var(--color-ivory-50);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.tn-map-card__hint {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-sm);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink-300);
+}
+
+.tn-map-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  margin-inline: auto;
+}
+
+.tn-map-wrap svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+/* Backdrop that hides seams between individually-simplified districts */
+.tn-map__landmass {
+  fill: var(--color-map-base, #d9c9a8);
+  stroke: none;
+}
+
+/* Every district starts as part of the same solid landmass color, so the
+   whole state initially reads as one calm shape rather than a patchwork. */
+.district {
+  fill: var(--color-map-base, #d9c9a8);
+  stroke: var(--color-ivory-50);
+  stroke-width: 1;
+  cursor: pointer;
+  transition: fill var(--dur-fast) var(--ease-out),
+    stroke var(--dur-fast) var(--ease-out),
+    stroke-width var(--dur-fast) var(--ease-out);
+}
+
+.district:hover,
+.district.is-hovered {
+  fill: var(--color-gold-400);
+}
+
+.district:focus-visible {
+  outline: none;
+  fill: var(--color-gold-400);
+  stroke: var(--color-maroon-700);
+  stroke-width: 1.6;
+}
+
+.district.is-active {
+  fill: var(--color-maroon-600);
+  stroke: var(--color-gold-300);
+  stroke-width: 1.4;
+}
+
+.district.is-active:hover,
+.district.is-active.is-hovered {
+  fill: var(--color-maroon-500);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .district {
+    transition: none;
+  }
+}
+
+/* ---------------------------------------------------------------------- */
+/* Tooltip that follows the cursor / focused district                     */
+/* ---------------------------------------------------------------------- */
+.tn-tooltip {
+  position: fixed;
+  z-index: 200;
+  transform: translate(-50%, calc(-100% - 12px));
+  background: var(--color-maroon-900);
+  color: var(--color-ivory-50);
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.78rem;
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dur-fast) var(--ease-out);
+}
+
+.tn-tooltip.is-visible {
+  opacity: 1;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Info panel — shows the selected district, prepares navigation           */
+/* ---------------------------------------------------------------------- */
+.district-panel {
+  position: sticky;
+  top: 6.5rem;
+  background: var(--color-ivory-50);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.district-panel__eyebrow {
+  margin-bottom: var(--space-2xs);
+}
+
+.district-panel__name {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  min-height: 1.2em;
+}
+
+.district-panel__empty {
+  color: var(--color-ink-300);
+  font-size: 0.92rem;
+}
+
+.district-panel__desc {
+  margin-top: var(--space-2xs);
+  color: var(--color-ink-500);
+  font-size: 0.92rem;
+}
+
+.district-panel__actions {
+  margin-top: var(--space-md);
+}
+
+.district-panel__actions .btn[aria-disabled="true"] {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.district-panel__count {
+  margin-top: var(--space-lg);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-line);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-ink-300);
+}
+
+.district-panel__count strong {
+  color: var(--color-maroon-600);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+}

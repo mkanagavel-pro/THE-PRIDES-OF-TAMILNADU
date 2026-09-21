@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Discover — TPOTN</title>
+  <meta name="description" content="Test what you know about Tamil Nadu and discover something new — facts, a quiz, and a random district to explore." />
+
+  <link rel="stylesheet" href="../css/global.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <link rel="stylesheet" href="../css/pages/discover.css" />
+</head>
+<body>
+
+  <!-- =========================== NAVBAR =========================== -->
+  <header class="navbar is-transparent" id="top">
+    <div class="container navbar__inner">
+      <a href="../index.html" class="navbar__brand">
+        <span class="navbar__brand-mark">✦</span>
+        <span>
+          TPOTN
+          <span class="navbar__brand-sub" style="display:block;">The Prides of Tamil Nadu</span>
+        </span>
+      </a>
+
+      <nav class="navbar__links" id="navLinks">
+        <a href="explore.html" class="navbar__link">Explore</a>
+        <a href="culture.html" class="navbar__link">Culture</a>
+        <a href="food.html" class="navbar__link">Food</a>
+        <a href="festivals.html" class="navbar__link">Festivals</a>
+        <a href="history.html" class="navbar__link">History</a>
+        <a href="discover.html" class="navbar__link is-active">Discover</a>
+      </nav>
+
+      <div class="navbar__actions">
+        <a href="../index.html#categories" class="btn btn-primary btn--sm">All Categories</a>
+        <button class="navbar__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- =========================== DISCOVER HERO =========================== -->
+    <section class="discover-hero">
+      <div class="discover-hero__dotgrid" aria-hidden="true"></div>
+      <div class="container discover-hero__inner">
+        <p class="eyebrow eyebrow--inverse" style="justify-content:center;">Hidden Pride</p>
+        <h1>Test what you know. Discover something new.</h1>
+        <p>Small surprising truths, a quick quiz, and a random district to try next.</p>
+      </div>
+    </section>
+
+    <!-- =========================== DID YOU KNOW? =========================== -->
+    <section class="section">
+      <div class="container">
+        <div class="discover-section__head">
+          <div class="section-head">
+            <p class="eyebrow">Did You Know?</p>
+            <h2>Small, surprising truths</h2>
+            <p>Tap a card to reveal the answer.</p>
+          </div>
+          <button class="btn btn-outline btn--sm" id="shuffleFacts" type="button" aria-label="Show a new set of facts">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="16" height="16"><path d="M4 4v6h6M20 20v-6h-6" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 10a8 8 0 0 0-14.6-4M4 14a8 8 0 0 0 14.6 4" stroke-linecap="round"/></svg>
+            Show me more
+          </button>
+        </div>
+
+        <div class="fact-grid" id="factGrid" data-reveal></div>
+      </div>
+    </section>
+
+    <!-- =========================== QUIZ =========================== -->
+    <section class="section section--tight">
+      <div class="container">
+        <div class="section-head" style="text-align:center; margin-inline:auto;" data-reveal>
+          <p class="eyebrow" style="justify-content:center;">Put It to the Test</p>
+          <h2>The Tamil Nadu Quiz</h2>
+          <p>Six quick questions, pulled fresh each time you play.</p>
+        </div>
+
+        <div id="quizContainer" data-reveal></div>
+      </div>
+    </section>
+
+    <!-- =========================== EXPLORE SOMETHING NEW =========================== -->
+    <section class="section section--tight">
+      <div class="container">
+        <div class="random-district" data-reveal>
+          <p class="eyebrow" style="justify-content:center;">Feeling Lucky?</p>
+          <h2>Explore something new</h2>
+          <p class="text-muted">Let the map pick a district for you.</p>
+          <div style="margin-top: var(--space-lg);">
+            <button class="btn btn-primary" id="randomDistrictBtn" type="button">Surprise Me</button>
+          </div>
+          <p class="random-district__result" id="randomDistrictResult" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================== FINAL CTA =========================== -->
+    <section class="section">
+      <div class="container">
+        <div class="discover-final" data-reveal>
+          <div class="discover-final__dotgrid" aria-hidden="true"></div>
+          <div class="discover-final__inner">
+            <p class="eyebrow eyebrow--inverse" style="justify-content:center;">Keep Going</p>
+            <h2>There's always another door in.</h2>
+            <p>Facts and quizzes are just one way to explore — the map has thirty-eight more.</p>
+            <div class="discover-final__actions">
+              <a href="explore.html" class="btn btn-primary">Explore the Map</a>
+              <a href="../index.html#categories" class="btn btn-ghost">All Categories</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================== FOOTER =========================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div>
+          <div class="site-footer__brand">TPOTN</div>
+          <span class="site-footer__brand-tamil">தமிழகத்தின் பெருமைகள்</span>
+          <p class="site-footer__tagline">
+            An interactive journey through Tamil Nadu's living culture —
+            built district by district, story by story.
+          </p>
+        </div>
+
+        <div>
+          <p class="site-footer__heading">Explore</p>
+          <ul class="site-footer__links">
+            <li><a href="explore.html">Explore the Map</a></li>
+            <li><a href="culture.html">Culture &amp; Traditions</a></li>
+            <li><a href="food.html">Food &amp; Cuisine</a></li>
+            <li><a href="arts.html">Arts &amp; Crafts</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="site-footer__heading">Discover More</p>
+          <ul class="site-footer__links">
+            <li><a href="festivals.html">Festivals &amp; Celebrations</a></li>
+            <li><a href="history.html">History &amp; Heritage</a></li>
+            <li><a href="people.html">People &amp; Stories</a></li>
+            <li><a href="places.html">Places &amp; Hidden Gems</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="site-footer__heading">The Project</p>
+          <ul class="site-footer__links">
+            <li><a href="../index.html#thesis">About TPOTN</a></li>
+            <li><a href="../index.html#categories">Start Exploring</a></li>
+            <li><a href="discover.html">Discover</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="site-footer__bottom">
+        <span>© <span id="year"></span> The Prides of Tamil Nadu. Built with pride, one district at a time.</span>
+        <div class="site-footer__bottom-links">
+          <a href="#top">Back to top</a>
+          <a href="../index.html">Home</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/components.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/pages/discover.js"></script>
+</body>
+</html>
